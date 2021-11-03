@@ -6,7 +6,13 @@ require 'sinatra/reloader' if development?
 class Battle < Sinatra::Base
 
   get '/' do
-      "Testing infrastructure working!"
+    erb(:index)
+  end
+
+  post '/names' do
+    @player1name = params[:player1name]
+    @player2name = params[:player2name]
+    erb(:play)
   end
 
   run! if app_file == $0
