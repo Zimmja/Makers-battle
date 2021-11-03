@@ -5,9 +5,9 @@ require 'sinatra/reloader' if development?
 
 class Battle < Sinatra::Base
 
-get '/' do
-    "Hello World"
-end
+  get '/' do
+      "Testing infrastructure working!"
+  end
 
   run! if app_file == $0
 end
