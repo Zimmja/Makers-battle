@@ -23,14 +23,17 @@ describe Battle do
   end
 
   feature 'Attacking works' do
-    scenario 'When player 1 attacks, confirms player 2 has been hit' do
+    before(:each) do
       sign_in_and_play
       click_button("Attack")
+    end
+
+    scenario 'When player 1 attacks, confirms player 2 has been hit' do
       expect(page).to have_content "Confirmed hit!"
     end
 
     scenario 'When player 1 attacks, player 2 loses 10 points HP' do
-      
+      expect(page).to have_content "Blue HP: 90"
     end
   end
 end
