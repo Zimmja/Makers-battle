@@ -8,9 +8,7 @@ require 'sinatra/reloader' if development?
 class Battle < Sinatra::Base
 
   DEFAULT_HP = 100
-  DEFAULT_DAMAGE = 20
-  $player_1 = Player.new('Red')
-  $player_2 = Player.new('Blue')
+  DEFAULT_DAMAGE = 10
 
   enable :sessions
 
@@ -19,18 +17,16 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_1_name] = params[:player_1_name]
-    session[:player_2_name] = params[:player_2_name]
-    session[:player_1_HP] = DEFAULT_HP 
-    session[:player_2_HP] = DEFAULT_HP
+    $player_1 = Player.new(params[:player_1_name], DEFAULT_HP)
+    $player_2 = Player.new(params[:player_2_name], DEFAULT_HP)
     redirect to('/play')
   end
 
   get '/play' do
     @player_1 = $player_1.name
     @player_2 = $player_2.name
-    @player_1_HP = DEFAULT_HP
-    @player_2_HP = DEFAULT_HP
+    @player_1_HP = $player_1.hp
+    @player_2_HP = $player_2.hp
     erb(:play)
   end
 

@@ -23,10 +23,14 @@ describe Battle do
   end
 
   feature 'Attacking works' do
-    scenario 'When player 1 attacks, player 2 loses 20 HP' do
+    scenario 'When player 1 attacks, confirms player 2 has been hit' do
       sign_in_and_play
       click_button("Attack")
       expect(page).to have_content "Confirmed hit!"
+    end
+
+    scenario 'When player 1 attacks, player 2 loses 10 points HP' do
+      
     end
   end
 end
