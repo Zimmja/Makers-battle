@@ -6,6 +6,8 @@ require 'sinatra/reloader' if development?
 
 class Battle < Sinatra::Base
 
+  DEFAULT_HP = 100
+
   enable :sessions
 
   get '/' do
@@ -15,12 +17,16 @@ class Battle < Sinatra::Base
   post '/names' do
     session[:player_1_name] = params[:player_1_name]
     session[:player_2_name] = params[:player_2_name]
+    session[:player_1_HP] = DEFAULT_HP 
+    session[:player_2_HP] = DEFAULT_HP
     redirect to('/play')
   end
 
   get '/play' do
     @player_1 = session[:player_1_name]
     @player_2 = session[:player_2_name]
+    @player_1_HP = session[:player_1_HP]
+    @player_2_HP = session[:player_2_HP]
     erb(:play)
   end
 
