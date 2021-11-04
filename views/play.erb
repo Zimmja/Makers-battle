@@ -1,4 +1,15 @@
+<% confirmed_hit = false %>
+
 <div>
-<p>Player 1: <%= @player_1 %>, HP: <%= @player_1_HP %></p>
-<p>Player 2: <%= @player_2 %>, HP: <%= @player_2_HP %></p>
+  <p>Player 1: <%= @player_1 %>, HP: <%= @player_1_HP %></p>
+</div>
+
 <div>
+  <form action="/attack" method="get">
+    <input type="submit" value="Attack">
+  </form>
+</div>
+
+<div>
+  <p>Player 2: <%= @player_2 %>, HP: <%= @player_2_HP %></p>
+</div>

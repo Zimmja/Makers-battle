@@ -9,10 +9,7 @@ describe Battle do
 
   feature 'Testing setup' do
     before(:each) do
-      visit('/')
-      fill_in("player_1_name", with: "Red")
-      fill_in("player_2_name", with: "Blue")
-      click_button("Submit")
+      sign_in_and_play
     end
 
     scenario 'Can receive player names in a form, submit the form, and see names on-screen' do
@@ -21,7 +18,15 @@ describe Battle do
     end
 
     scenario 'Displays the HP of player 2' do
-      expect(page).to have_content "Player 2: Blue, HP: #{100}"
+      expect(page).to have_content "Player 2: Blue, HP: #{Battle::DEFAULT_HP}"
+    end
+  end
+
+  feature 'Attacking works' do
+    scenario 'When player 1 attacks, player 2 loses 20 HP' do
+      sign_in_and_play
+      click_button("Attack")
+      expect(page).to have_content "Confirmed hit!"
     end
   end
 end

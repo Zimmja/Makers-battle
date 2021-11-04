@@ -7,6 +7,7 @@ require 'sinatra/reloader' if development?
 class Battle < Sinatra::Base
 
   DEFAULT_HP = 100
+  DEFAULT_DAMAGE = 20
 
   enable :sessions
 
@@ -28,6 +29,12 @@ class Battle < Sinatra::Base
     @player_1_HP = session[:player_1_HP]
     @player_2_HP = session[:player_2_HP]
     erb(:play)
+  end
+
+  get '/attack' do
+    @player_1 = session[:player_1_name]
+    @player_2 = session[:player_2_name]
+    erb(:attack)
   end
 
   run! if app_file == $0
