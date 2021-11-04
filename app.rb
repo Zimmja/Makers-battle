@@ -31,7 +31,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @player_1 = $player_1
     @player_2 = $player_2
-    $player_2.take_hit(DEFAULT_DAMAGE)
+    $player_1.attack($player_2, DEFAULT_DAMAGE)
     erb(:attack)
   end
 

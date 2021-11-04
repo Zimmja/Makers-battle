@@ -10,4 +10,8 @@ class Player
         @hp -= damage
     end
 
+    def attack(opponent, damage)
+        opponent.take_hit(damage)
+    end
+    
 end
