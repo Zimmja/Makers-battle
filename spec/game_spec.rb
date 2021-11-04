@@ -8,9 +8,10 @@ describe Game do
 
   describe "#turn_attack" do
     it "calls attack on whichever player's turn it is to receive a hit" do
-      expect(player2).to receive(:take_hit).with(10)
-      game.turn_attack(10)
       expect(player1).to receive(:take_hit).with(10)
+      game.turn_attack(10)
+      game.switch_turn
+      expect(player2).to receive(:take_hit).with(10)
       game.turn_attack(10)
     end
   end
@@ -24,6 +25,7 @@ describe Game do
 
   describe "#switch_turn" do
     it "switches @turn back-and-forth between 1 and 2" do
+      game.switch_turn
       expect(game.turn).to eq 1
       game.switch_turn
       expect(game.turn).to eq 2
@@ -34,6 +36,7 @@ describe Game do
 
   describe "#current_player" do
     it 'returns the player who has the next turn' do
+      game.switch_turn
       expect(game.current_player).to eq player1
       game.switch_turn
       expect(game.current_player).to eq player2

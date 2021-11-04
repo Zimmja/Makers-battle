@@ -7,12 +7,11 @@ class Game
   def initialize(player_1, player_2)
     @player_1 = player_1
     @player_2 = player_2
-    @turn = 1
+    @turn = 0
   end
 
   def turn_attack(damage)
     attack(current_target, damage)
-    switch_turn
   end
 
   def attack(target, damage)
