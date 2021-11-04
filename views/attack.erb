@@ -1,2 +1,9 @@
-Confirmed hit! <%= $game.player_1.name %> attacked <%= $game.player_2.name %>.
-<%= $game.player_2.name %> HP: <%= $game.player_2.hp %>
+<div>
+Confirmed hit! <%= $game.current_target.name %> attacked <%= $game.current_player.name %>.
+<%= $game.current_player.name %> HP: <%= $game.current_player.hp %>
+</div>
+<div><br>
+  <form action="/play" method="get">
+    <input type="submit" value="Continue">
+  </form>
+</div>

@@ -1,15 +1,10 @@
-<% confirmed_hit = false %>
-
 <div>
-  <p>Player 1: <%= $game.player_1.name %>, HP: <%= $game.player_1.hp %></p>
+  <h3>It's <%= $game.current_player.name %>'s turn.</h3>
+  <p>Player 1: <b><%= $game.player_1.name %></b>, HP: <b><%= $game.player_1.hp %></b></p>
+  <p>Player 2: <b><%= $game.player_2.name %></b>, HP: <b><%= $game.player_2.hp %></b></p>
 </div>
-
 <div>
   <form action="/attack" method="get">
     <input type="submit" value="Attack">
   </form>
-</div>
-
-<div>
-  <p>Player 2: <%= $game.player_2.name %>, HP: <%= $game.player_2.hp %></p>
 </div>
