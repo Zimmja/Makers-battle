@@ -14,10 +14,6 @@ class Game
     attack(current_target, damage)
   end
 
-  def attack(target, damage)
-    target.take_hit(damage)
-  end
-
   def switch_turn
     @turn = (@turn == 1 ? 2 : 1)
   end
@@ -30,4 +26,10 @@ class Game
     @turn == 1 ? @player_2 : @player_1
   end
 
+  private
+
+  def attack(target, damage)
+    target.take_hit(damage)
+  end
+  
 end
