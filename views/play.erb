@@ -1,10 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Battle</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: sans-serif; font-size: 15px; color: black; 
+      width: 700px; margin: 0 auto; background-color: ghostwhite; 
+	  }
+    .arena {
+      width: 100%;
+      font-size: 20px;
+      padding: 10px; margin-top: 10%;
+      background-color: white;
+      border-style: solid; border-width: 2px; border-radius: 10px; border-color: rgba(0,0,0,0.25);
+    }
+    .colorbox {
+      width: 98%;
+      margin: 0 auto;
+    }
+    .redbox {
+      text-align: right; padding-right: 5%;
+    }
+    .bluebox {
+      text-align: left; padding-left: 5%;
+    }
+    #redmonster {
+      height: 200px;
+    }
+    #bluemonster {
+      height: 200px;
+      position: relative; top: 30px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="arena">
+  <div class="colorbox redbox">
+    <p>Player 1: <b><%= $game.player_1.name %></b>, HP: <b><%= $game.player_1.hp %></b></p>
+    <img src="https://archives.bulbagarden.net/media/upload/f/f1/Spr_3f_006.png" id="redmonster" alt="monster">
+  </div>
+  <div class="colorbox bluebox">
+    <img src="https://cdn2.bulbagarden.net/upload/5/5b/Spr_b_3f_009.png" id="bluemonster" alt="monster">
+    <p>Player 2: <b><%= $game.player_2.name %></b>, HP: <b><%= $game.player_2.hp %></b></p>
+  </div>
+</div>
+
 <div>
   <h3>It's <%= $game.current_player.name %>'s turn.</h3>
-  <p>Player 1: <b><%= $game.player_1.name %></b>, HP: <b><%= $game.player_1.hp %></b></p>
-  <p>Player 2: <b><%= $game.player_2.name %></b>, HP: <b><%= $game.player_2.hp %></b></p>
-</div>
-<div>
   <form action="/attack" method="get">
     <input type="submit" value="Attack">
   </form>
 </div>
+
+</body>

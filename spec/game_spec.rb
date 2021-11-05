@@ -8,13 +8,6 @@ describe Game do
 
   before(:each) { game.switch_turn }
 
-  # describe "#attack" do
-  #   it "calls the take_hit method on the target" do
-  #     expect(target).to receive(:take_hit).with(10)
-  #     game.attack(target, 10)
-  #   end
-  # end
-
   describe "#turn_attack" do
     it "whichever player's turn it is to receive an attack takes a hit" do
       check_hit(player2)
